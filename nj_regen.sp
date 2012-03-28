@@ -10,7 +10,7 @@
 #include <sourcemod>
 #include <tf2>
 
-#define PLUGIN_VERSION "0.0.2"
+#define PLUGIN_VERSION "0.0.3"
 
 #define MAX_PLAYERS 24
 
@@ -64,7 +64,7 @@ public Action:Command_RegenHandle(client, args)
 	}
 	else
 	{
-		PrintToChat(client, "invalid parameter. this plugin accept on/off");
+		PrintToChat(client, "[nj]invalid parameter. this plugin accept on/off");
 	}
 }
 
@@ -73,7 +73,7 @@ public Action:Command_RegenOn(client, args)
 	
 	if (GetClientTeam(client) != 1) //not spectator
 	{
-		PrintToChat(client, "[regen on]activate regen mode");
+		PrintToChat(client, "[nj][regen on]activate regen mode");
 		RegenInterval = GetConVarFloat(cvar_RegenInterval);
 		RegenTimers[client] = CreateTimer(RegenInterval, RegenPlayer, client, TIMER_REPEAT);
 	}
@@ -83,7 +83,7 @@ public Action:Command_RegenOff(client, args)
 {
 	if (RegenTimers[client] != INVALID_HANDLE)
 	{
-		PrintToChat(client, "[regen off]deactivate regen mode");
+		PrintToChat(client, "[nj][regen off]deactivate regen mode");
 		KillTimer(RegenTimers[client]);
 		RegenTimers[client] = INVALID_HANDLE;
 	}
